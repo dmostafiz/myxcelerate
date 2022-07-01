@@ -12,14 +12,7 @@ use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\DB;
 
-Route::get('dbtest', function() {
-    $user = DB::table('users')->get();
-    dd("dbtest", $user);
-});
 
-Route::get('/',function(){
-    return view('sample');
-});
 
 Route::get('/landing/{uname?}', function (Request $request) {
 
@@ -34,6 +27,7 @@ Route::get('/landing/{uname?}', function (Request $request) {
 
 
 Route::post('/save_contact', function (Request $request){
+    
     // dd($request->all());
 
     $validated = $request->validate([
@@ -44,6 +38,8 @@ Route::post('/save_contact', function (Request $request){
 
     if($request->sponsor){
         $sponsor = User::where('username', $request->sponsor)->first();
+
+        // dd( $sponsor );
 
         if($sponsor){
 
@@ -65,10 +61,11 @@ Route::post('/save_contact', function (Request $request){
 
             session()->flash('success', 'Thank you for submitting your information.');
 
-            return redirect()->to('/'.$request->sponsor);
         }
-    }
 
+    }
+    
+    return redirect()->to('/'.$request->sponsor);
 
 })->name('save_contact');
 
@@ -200,6 +197,7 @@ require __DIR__.'/auth.php';
 Route::get('/{uname?}', function (Request $request) {
     
     // return redirect()->to('/login');
+    // $admin = User::where('user_type')
 
     if(!$request->uname){
         return redirect()->to('/master');

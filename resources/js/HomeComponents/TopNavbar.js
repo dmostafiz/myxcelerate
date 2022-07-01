@@ -34,8 +34,14 @@ export default function TopNavbar() {
                     </ul>
                 </div>
                 {/* menu ends */}
+
+
+                {/* <!-- header right starts --> */}
+                <div className="dtr-header-right dtr-header-contact"> <i>Everyone is talking about fuel prices! You can help!</i></div>
+                {/* <!-- header right ends --> */}
+
                 {/* header right starts */}
-                <div className="main-navigation dtr-header-right">
+                {/* <div className="main-navigation dtr-header-right">
                     <ul className="sf-menu dtr-nav dark-nav-on-load dark-nav-on-scroll">
                         {authUser && <li>
                             <a className="nav-link" href="/admin/dashboard">
@@ -64,7 +70,7 @@ export default function TopNavbar() {
 
 
                     </ul>
-                </div>
+                </div> */}
                 {/* header right ends */}
             </div>
         </header>
